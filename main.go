@@ -22,6 +22,7 @@ type sticky struct {
 var stickies map[int]sticky
 
 const filename = "stickies.csv"
+const hostAddress = "localhost:8484"
 
 //
 // MAIN FUNCTION
@@ -46,7 +47,7 @@ func main() {
 	router.GET("/stickies/:id", handleGetStickyById)
 	router.GET("/stickies/random", handleGetRandomSticky)
 
-	router.Run("localhost:8080")
+	router.Run(hostAddress)
 }
 
 //
