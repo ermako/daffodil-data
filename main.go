@@ -21,7 +21,6 @@ type sticky struct {
 
 var stickies map[int]sticky
 
-const filename = "stickies.csv"
 const hostAddress = "localhost:8484"
 
 //
@@ -29,6 +28,12 @@ const hostAddress = "localhost:8484"
 //
 
 func main() {
+	if len(os.Args) < 2 {
+		log.Fatal("usage: ./daffodil-data <filename>")
+		return
+	}
+
+	filename := os.Args[1]
 	file, err := os.OpenFile(filename, os.O_RDONLY, 0)
 
 	if err != nil {
